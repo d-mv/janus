@@ -1,0 +1,68 @@
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { VitePWA } from "vite-plugin-pwa";
+
+export default defineConfig({
+	build: {
+		rollupOptions: {
+			output: {
+				manualChunks(id) {
+					if (!id.includes("node_modules")) {
+						return undefined;
+					}
+
+					const path = id.split("node_modules/")[1];
+					if (!path) {
+						return undefined;
+					}
+
+					const segments = path.split("/");
+					const packageName = segments[0].startsWith("@")
+						? `${segments[0]}-${segments[1] ?? "pkg"}`
+						: segments[0];
+
+					return `lib-${packageName.replace(/[^a-zA-Z0-9_-]/g, "_")}`;
+				},
+			},
+		},
+	},
+	plugins: [
+		react(),
+		VitePWA({
+      registerType: "autoUpdate",
+      includeAssets: ["favicon.svg"],
+      manifest: {
+        name: "PWA OpenAPI Viewer",
+        short_name: "OpenAPI Viewer",
+        description: "Client-side OpenAPI viewer with shareable compressed links",
+        theme_color: "#0f172a",
+        background_color: "#0f172a",
+        display: "standalone",
+        start_url: "/",
+        icons: [
+          {
+            src: "/favicon.svg",
+            sizes: "64x64",
+            type: "image/svg+xml"
+          }
+        ]
+      },
+      workbox: {
+        globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/cdn\.jsdelivr\.net\//,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "cdn-assets",
+              expiration: {
+                maxEntries: 20,
+                maxAgeSeconds: 60 * 60 * 24 * 30
+              }
+            }
+          }
+        ]
+      }
+    })
+  ]
+});
