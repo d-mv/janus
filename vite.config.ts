@@ -30,7 +30,7 @@ export default defineConfig({
 		react(),
 		VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.svg"],
+      includeAssets: ["favicon.ico", "favicon-192.png"],
       manifest: {
         name: "PWA OpenAPI Viewer",
         short_name: "OpenAPI Viewer",
@@ -38,12 +38,13 @@ export default defineConfig({
         theme_color: "#0f172a",
         background_color: "#0f172a",
         display: "standalone",
-        start_url: "/",
+        start_url: ".",
+        scope: ".",
         icons: [
           {
-            src: "/favicon.svg",
-            sizes: "64x64",
-            type: "image/svg+xml"
+            src: "favicon-192.png",
+            sizes: "192x192",
+            type: "image/png"
           }
         ]
       },

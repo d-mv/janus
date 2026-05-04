@@ -2,6 +2,12 @@ import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import SwaggerUI from "swagger-ui-react";
 import AsyncApiPreview from "./components/AsyncApiPreview";
 import { logEvent } from "./lib/logger";
+const BASE = import.meta.env.BASE_URL;
+const menuDarkIcon = `${BASE}icons/menu_dark.svg`;
+const menuLightIcon = `${BASE}icons/menu_light.svg`;
+const sunIcon = `${BASE}icons/sun.svg`;
+const moonIcon = `${BASE}icons/moon.svg`;
+const logoVector = `${BASE}logo_vector.svg`;
 import {
 	createShareHash,
 	decodeShareHash,
@@ -388,8 +394,8 @@ function App() {
 							<img
 								src={
 									themeMode === "dark"
-										? "/icons/menu_dark.svg"
-										: "/icons/menu_light.svg"
+										? menuDarkIcon
+										: menuLightIcon
 								}
 								alt="Menu"
 								className="menu-icon"
@@ -484,7 +490,7 @@ function App() {
 						) : null}
 					</div>
 					<div className="name">
-						<img src="/logo_vector.svg" alt="Janus" className="logo" />
+						<img src={logoVector} alt="Janus" className="logo" />
 						<p>Janus</p>
 					</div>
 				</div>
@@ -498,7 +504,7 @@ function App() {
 					title={`Switch to ${themeMode === "dark" ? "light" : "dark"} mode`}
 				>
 					<img
-						src={themeMode === "dark" ? "/icons/sun.svg" : "/icons/moon.svg"}
+						src={themeMode === "dark" ? sunIcon : moonIcon}
 						alt={themeMode === "dark" ? "Dark mode" : "Light mode"}
 						className="theme-icon"
 					/>

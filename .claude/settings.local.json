@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://apps.mlnkv.net/apps/janus)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://apps.mlnkv.net/apps/janus/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://apps.mlnkv.net/apps/janus/icons/menu_light.svg)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://apps.mlnkv.net/apps/janus/logo_vector.svg)"
+    ]
+  }
+}
