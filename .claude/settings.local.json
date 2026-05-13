@@ -11,7 +11,9 @@
       "Bash(git -C /Users/dmelnikov/code/janus show 014766e --no-stat -p)",
       "Bash(git -C /Users/dmelnikov/code/janus show 014766e -p)",
       "Bash(docker context *)",
-      "Bash(ssh-add -l)"
+      "Bash(ssh-add -l)",
+      "Bash(bun --version)",
+      "Bash(bun run *)"
     ]
   }
 }

@@ -4,36 +4,42 @@ Janus is a modern, lightweight, and offline-capable OpenAPI and AsyncAPI editor 
 
 ## Features
 
-- **Split-View Editor:** High-performance code editing with Monaco Editor.
-- **Live Preview:** Instant rendering for both OpenAPI (via Swagger UI) and AsyncAPI.
-- **Sharing:** Compressed URL hash sharing for quick collaboration without a backend.
-- **Format Support:** Native support for JSON and YAML.
-- **PWA:** Can be installed on your desktop or mobile device for offline use.
-- **Observability:** (Disabled) Integrated remote logging for error tracking and usage analytics.
+- **Split-View Editor:** High-performance code editing with Monaco Editor (collapsible).
+- **Live Preview:** Instant rendering for OpenAPI 2.0/3.x (via Swagger UI) and AsyncAPI 2.x/3.x (custom renderer).
+- **Sharing:** Compressed URL hash sharing (`pako` deflate + base64url) — no backend required.
+- **Format Support:** Native JSON and YAML with auto-detection and pretty-printing.
+- **Import / Export:** Load any `.json`, `.yaml`, or `.yml` file; export as JSON or YAML.
+- **PWA:** Installable on desktop or mobile for offline use.
+- **Theme:** Light, dark, and system-preference modes.
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (v18+)
-- npm or pnpm
+- [Bun](https://bun.sh) (v1+)
 
 ### Installation
 
 ```bash
-npm install
+bun install
 ```
 
 ### Development
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 ### Build
 
 ```bash
-npm run build
+bun run build
+```
+
+### Tests
+
+```bash
+bun run test
 ```
 
 ## Documentation
@@ -43,7 +49,7 @@ npm run build
 
 ## Deployment
 
-Janus is deployed to Fly.io as a Dockerized Nginx application. See `fly.toml` and `Dockerfile` for details.
+Janus is deployed as a Dockerized Nginx application on the Contabo VPS (`167.86.70.240`). See `Dockerfile` and `nginx.conf` for details.
 
 ## License
 
