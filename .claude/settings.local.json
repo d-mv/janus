@@ -4,7 +4,14 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://apps.mlnkv.net/apps/janus)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://apps.mlnkv.net/apps/janus/)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://apps.mlnkv.net/apps/janus/icons/menu_light.svg)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://apps.mlnkv.net/apps/janus/logo_vector.svg)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://apps.mlnkv.net/apps/janus/logo_vector.svg)",
+      "Bash(git -C /Users/dmelnikov/code/janus log --oneline -5)",
+      "Bash(git -C /Users/dmelnikov/code/janus show HEAD --stat)",
+      "Bash(git -C /Users/dmelnikov/code/janus log --all --oneline --format=\"%h %s\")",
+      "Bash(git -C /Users/dmelnikov/code/janus show 014766e --no-stat -p)",
+      "Bash(git -C /Users/dmelnikov/code/janus show 014766e -p)",
+      "Bash(docker context *)",
+      "Bash(ssh-add -l)"
     ]
   }
 }

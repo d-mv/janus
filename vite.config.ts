@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
+	base: "/",
 	build: {
 		rollupOptions: {
 			output: {
@@ -30,7 +31,7 @@ export default defineConfig({
 		react(),
 		VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.ico", "favicon-192.png"],
+      includeAssets: ["favicon.ico", "favicon-192.png", "favicon-180-precomposed.png", "favicon-32.png"],
       manifest: {
         name: "PWA OpenAPI Viewer",
         short_name: "OpenAPI Viewer",
@@ -38,13 +39,39 @@ export default defineConfig({
         theme_color: "#0f172a",
         background_color: "#0f172a",
         display: "standalone",
-        start_url: ".",
-        scope: ".",
+        start_url: "/",
+        scope: "/",
         icons: [
+          {
+            src: "favicon-36.png",
+            sizes: "36x36",
+            type: "image/png"
+          },
+          {
+            src: "favicon-48.png",
+            sizes: "48x48",
+            type: "image/png"
+          },
+          {
+            src: "favicon-72.png",
+            sizes: "72x72",
+            type: "image/png"
+          },
+          {
+            src: "favicon-96.png",
+            sizes: "96x96",
+            type: "image/png"
+          },
           {
             src: "favicon-192.png",
             sizes: "192x192",
             type: "image/png"
+          },
+          {
+            src: "favicon-192.png",
+            sizes: "192x192",
+            type: "image/png",
+            purpose: "maskable"
           }
         ]
       },

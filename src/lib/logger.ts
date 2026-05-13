@@ -18,8 +18,8 @@ type LogPayload = {
 };
 
 const SESSION_ID_STORAGE_KEY = "logger:session-id";
-const LOGGER_API_BASE_URL = import.meta.env.VITE_LOGGER_API_BASE_URL ?? "";
-const LOGGER_INGEST_KEY = import.meta.env.VITE_LOGGER_INGEST_KEY ?? "";
+// const LOGGER_API_BASE_URL = import.meta.env.VITE_LOGGER_API_BASE_URL ?? "";
+// const LOGGER_INGEST_KEY = import.meta.env.VITE_LOGGER_INGEST_KEY ?? "";
 const LOGGER_ENV = import.meta.env.MODE;
 
 const isPrimitive = (value: unknown): value is LogContextPrimitive =>
@@ -106,11 +106,15 @@ export async function sendLog(
   }
 }
 
-export function logEvent(input: LogInput): void {
+export function logEvent(_input: LogInput): void {
+  // Logger disabled by user request to ignore logger-api
+  return;
+  /*
   if (!LOGGER_API_BASE_URL || !LOGGER_INGEST_KEY) {
     return;
   }
 
   const payload = buildLogPayload(input);
   void sendLog(LOGGER_API_BASE_URL, LOGGER_INGEST_KEY, payload);
+  */
 }

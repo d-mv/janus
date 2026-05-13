@@ -24,7 +24,7 @@ graph TD
     
     subgraph "External Services"
         FlyIO[Fly.io Hosting]
-        LoggerAPI[Logger API]
+        LoggerAPI[Logger API (Disabled)]
     end
     
     User -->|Interacts with| App
@@ -47,7 +47,7 @@ sequenceDiagram
     participant A as App State
     participant P as Parser (lib/specText)
     participant V as Preview (SwaggerUI/AsyncAPI)
-    participant L as Logger API
+    participant L as Logger API (Disabled)
 
     U->>E: Types schema text
     E->>A: onChange event
@@ -57,7 +57,7 @@ sequenceDiagram
         A->>V: Render Preview
     else Invalid Schema
         P-->>A: Throw Error
-        A->>L: logEvent(warn, "Schema parse error")
+        A->>L: logEvent(warn, "Schema parse error") (No-op)
         A->>U: Show error banner
     end
 ```
@@ -80,7 +80,7 @@ flowchart LR
 | Service | Purpose | Integration Details |
 |---------|---------|---------------------|
 | **Fly.io** | Hosting | Static site hosting via Docker/Nginx. |
-| **Logger API** | Observability | Remote log ingestion for errors and analytics. |
+| **Logger API** | Observability | (Disabled) Remote log ingestion for errors and analytics. |
 | **Monaco Editor** | Code Editing | Integrated via `@monaco-editor/react`. |
 | **Swagger UI** | OpenAPI Rendering | Used to render OpenAPI 2.0/3.0/3.1 specs. |
 | **Vitest** | Testing | Unit and integration testing framework. |
@@ -91,7 +91,7 @@ flowchart LR
 - **Persistence:** 
     - `localStorage`: Stores the last edited schema.
     - `URL Hash`: Stores a compressed (pako/base64) version of the schema for sharing.
-- **Logging:** All major events (app load, schema save, parse errors) are asynchronously sent to the Logger API.
+- **Logging:** (Disabled) All major events (app load, schema save, parse errors) were previously sent to the Logger API.
 
 ## 7. Security Details
 

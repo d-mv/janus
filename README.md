@@ -9,7 +9,7 @@ Janus is a modern, lightweight, and offline-capable OpenAPI and AsyncAPI editor 
 - **Sharing:** Compressed URL hash sharing for quick collaboration without a backend.
 - **Format Support:** Native support for JSON and YAML.
 - **PWA:** Can be installed on your desktop or mobile device for offline use.
-- **Observability:** Integrated remote logging for error tracking and usage analytics.
+- **Observability:** (Disabled) Integrated remote logging for error tracking and usage analytics.
 
 ## Getting Started
 
