@@ -1,0 +1,12 @@
+[app]
+name = "janus"
+type = "static-spa"
+port = 8080
+
+[deploy]
+domain = "janus.mlnkv.net"
+dockerfile = true
+dockerfile_exposes = 8080
+
+[previous]
+fly = false
